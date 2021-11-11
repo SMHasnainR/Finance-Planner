@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="bootstrap.css" type="text/css" />
+    <style>
+        body{
+            background-color: #303134;
+        }
+        input{
+            background-color: #303134 !important;
+            border-color: white !important;
+            border-radius: 20px !important;
+            border-width: 1px !important;
+            color: white !important;
+            padding: 2px 5px !important;
+        }
+    </style>
+    <title>Financial Planner</title>
+</head>
+<body>
+    <div class="container">
+        <h1 class="text-center text-warning m-5 text-uppercase">Financial Planner</h1>
+        <div class="row">
+            <div class="offset-md-4 col-md-4">
+                <h4 class="text-center text-white">Week 1</h4>
+                <div class="my-2">
+                    <div class="d-inline col-md-3">
+                        <span class="text-primary mt-5"> Food: </span>
+                    </div>
+                    <div class="d-inline col-md-9">
+                        <input type="number" id="food" class="form-control w-75 expenses d-inline"> 
+                    </div>
+                </div>
+                <div class="my-2">
+                    <div class="d-inline col-md-3">
+                        <span class="text-primary mt-5"> Petrol: </span>
+                    </div>
+                    <div class="d-inline col-md-9">
+                        <input type="number" id="petrol" class="w-75 expenses"> 
+                    </div>
+                </div>
+                <hr class="text-white">
+                <span class="text-danger text-uppercase"> Total: </span>
+                <input type="text" class="w-75" id="total" readonly>
+            </div>
+        </div>
+    </div>
+	<script src="jquery.js"></script>
+    <script>
+        let food = 0;
+        let petrol = 0;
+        let expenses = 0;
+        $(document).ready(function(){
+            // $('.expenses').on('change', function(){
+            //     expenses += parseInt($(this).val());
+            //     console.log(expenses);
+            //     $('#total').val(0);
+            //     $('#total').val(expenses);
+            // })
+            $('#food').on('change', function(){
+                food = 0;
+                food = parseInt($(this).val());
+                expenses = food + petrol;
+                $('#total').val(0);
+                $('#total').val(expenses);
+            })
+            $('#petrol').on('change', function(){
+                petrol = 0;
+                petrol = parseInt($(this).val());
+                expenses = food + petrol;
+                $('#total').val(0);
+                $('#total').val(expenses);
+            })
+        });
+    </script>
+</body>
+</html>
